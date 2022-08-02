@@ -4,7 +4,7 @@ from flask import Flask, abort
 app = Flask(__name__)
 
 
-@app.route('/index/')
+@app.route('')
 def hello():
     return '<h1>Hello, World!</h1>'
 
