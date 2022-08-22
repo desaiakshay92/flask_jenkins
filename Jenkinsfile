@@ -2,6 +2,9 @@ pipeline {
     agent {
         label 'XYZ'
         }
+    environment {
+		DOCKERHUB_CREDENTIALS=credentials('DockerHub')
+	}
 
     stages {
         stage('Build Image') {
@@ -14,6 +17,12 @@ pipeline {
                 sh 'sudo docker run -d --name flask_container desaiakshay92/flask_jenkis'
             }
         }
+        stage('Login') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
         stage('Test') {
             steps {
                 echo 'Successfully Pushed'
