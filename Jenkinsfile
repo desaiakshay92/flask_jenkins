@@ -3,9 +3,8 @@ pipeline {
         label 'XYZ'
         }
     environment {
-		DOCKERHUB_CREDENTIALS=credentials('DockerHub')
+		DOCKERHUB_CREDENTIALS = credentials('DockerHub')
 	}
-
     stages {
         stage('Build Image') {
             steps {
@@ -15,6 +14,7 @@ pipeline {
         stage('Login') {
 
 			steps {
+                sh 'echo $DOCKERHUB_CREDENTIALS'
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 			}
 		}
