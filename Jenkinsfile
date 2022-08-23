@@ -19,16 +19,17 @@ pipeline {
 		sh 'docker push desaiakshay92/flask_jenkins'
             }
         }
+	stage('Test') {
+            steps {
+                echo 'Successfully Pushed'
+            }
         stage('Run Image') {
             steps {
                 sh 'docker run -d -p 8020:9191 --name flask_container desaiakshay92/flask_jenkins'
             }
         }
         
-        stage('Test') {
-            steps {
-                echo 'Successfully Pushed'
-            }
+        
         }
     }
 }
