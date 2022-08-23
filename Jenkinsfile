@@ -14,9 +14,10 @@ pipeline {
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
 			}
 		}
-        stage('Build Image') {
+        stage('Build_&_Push Image') {
             steps {
                 sh 'docker build -t desaiakshay92/flask_jenkins .'
+		sh 'docker push desaiakshay92/flask_jenkins'
             }
         }
         stage('Run Image') {
