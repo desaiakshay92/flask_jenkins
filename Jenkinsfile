@@ -7,7 +7,6 @@ pipeline {
 	}
     stages {
         stage('Login') {
-
 		steps {
                 sh 'echo $DOCKERHUB_CREDENTIALS_USR'
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW'
