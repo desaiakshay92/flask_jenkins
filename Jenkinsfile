@@ -17,7 +17,7 @@ pipeline {
         stage('Build&Push Image') {
             steps {
                 sh 'docker build -t desaiakshay92/flask_jenkins .'
-		sh 'docker push desaiakshay92/flask_jenkins
+		sh 'docker push desaiakshay92/flask_jenkins'
             }
         }
         stage('Run Image') {
