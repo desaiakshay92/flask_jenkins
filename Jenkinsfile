@@ -8,20 +8,20 @@ pipeline {
     stages {
         stage('Login') {
 
-		steps {
+			steps {
                 sh 'echo $DOCKERHUB_CREDENTIALS_USR'
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW'
-		sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
 			}
 		}
         stage('Build Image') {
             steps {
-                sh 'sudo docker build -t desaiakshay92/flask_jenkins .'
+                sh 'docker build -t desaiakshay92/flask_jenkins .'
             }
         }
         stage('Run Image') {
             steps {
-                sh 'sudo docker run -d --name flask_container desaiakshay92/flask_jenkis'
+                sh 'docker run -d --name flask_container desaiakshay92/flask_jenkis'
             }
         }
         
